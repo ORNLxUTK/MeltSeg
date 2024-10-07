@@ -4,8 +4,6 @@ from sam2.sam2_video_predictor import SAM2VideoPredictor
 import numpy as np
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
-from tkinter import ttk
-import tkinter as tk
 import os
 from PIL import Image
 import subprocess
@@ -91,7 +89,6 @@ class SAM2Boot(SAM2ModelSelector):
         self.root.quit()
         self.device = self.selectdevice()
         self.model_version = self.selectmodelversion()
-        self.print_setup()
         self.run(prompts_file_path)
         self.save_video_segments(self.input_frames_dir_path, 0.25)
         self.convert_frames_to_video()
@@ -128,7 +125,6 @@ class SAM2Boot(SAM2ModelSelector):
                                         dtype=np.float32)
                 labels_array = np.array(prompts[obj_id][labels],
                                         dtype=np.int64)
-                print(f"Processing object {obj_id}: {points_array, labels_array}")
                 
                 _, _, _ = predictor.add_new_points_or_box(
                     inference_state=state,
@@ -189,7 +185,6 @@ class SAM2Boot(SAM2ModelSelector):
             )
             final_img = Image.fromarray(blended_img.astype(np.uint8))
             final_img.save(os.path.join(output_dir, f'masked_frame_{frame_idx}.jpg'))
-        print(f"Segmented video frames saved to {output_dir}")
         self.masked_output_dir = output_dir
     
     def convert_frames_to_video(self):
@@ -213,7 +208,6 @@ class SAM2Boot(SAM2ModelSelector):
             '-crf', '23',
             video_name
         ]
-        print(command)
         try:
             subprocess.run(command, capture_output=True, text=True, check=True) 
             messagebox.showinfo("Success", "Video created successfully.")
@@ -222,6 +216,6 @@ class SAM2Boot(SAM2ModelSelector):
 
 
 if "__main__" == __name__:
-    sam2_setup = SAM2Boot(input_frames_dir_path="/home/jwetzel2/ORNL/WeldPoolSeg/Data/Good_Video_Frames",
-                          prompts_file_path="/home/jwetzel2/ORNL/WeldPoolSeg/Data/prompts.json",
-                          output_video_fps=1)
+    sam2_setup = SAM2Boot(input_frames_dir_path=None,
+                          prompts_file_path=None,
+                          output_video_fps=None)

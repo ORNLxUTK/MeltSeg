@@ -87,7 +87,7 @@ class ImageAnnotationTool:
         else:
             # Canvas size is available, proceed with image loading
             self.load_image()
-        
+
     def load_image(self):
         if self.image_path:
             self.original_image = Image.open(self.image_path)
@@ -115,7 +115,8 @@ class ImageAnnotationTool:
 
     def toggle_label(self):
         self.current_label = 'neg' if self.current_label == 'pos' else 'pos'
-        self.toggle_button.config(text=f"Current: {self.current_label.capitalize()}")
+        self.toggle_button.config(
+            text=f"Current: {self.current_label.capitalize()}")
 
     def on_left_click(self, event):
         if self.displayed_image:
@@ -253,12 +254,10 @@ class ImageAnnotationTool:
         if self.current_object not in object_list:
             self.object_dropdown.set(object_list[0] if object_list else "")
 
-
-def main():
-    root = tk.Tk()
-    ImageAnnotationTool(root)
-    root.mainloop()
-
-
 if __name__ == "__main__":
+    def main():
+        root = tk.Tk()
+        ImageAnnotationTool(root, input_frame_dir=None)
+        root.mainloop()
+
     main()

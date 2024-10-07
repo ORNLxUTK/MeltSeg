@@ -4,6 +4,7 @@ import cv2
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 
+
 class VideoProcessing:
     def __init__(self):
         self.video_path = None
@@ -20,7 +21,7 @@ class VideoProcessing:
                 if os.path.isfile(file_path):
                     self.video_path = file_path
                     return file_path
-            except (OSError, IOError) as e:
+            except (OSError, IOError):
                 messagebox.showinfo("Error", f"Please select a valid video file.")
         messagebox.showinfo("Error", "No file selected.")
 
@@ -33,7 +34,7 @@ class VideoProcessing:
                 self.output_folder = folder_path
                 return folder_path
             else:
-                create = messagebox.askyesno("Create Folder", 
+                create = messagebox.askyesno("Create Folder",
                                              f"The folder '{folder_path}' doesn't exist. Do you want to create it?")
                 if create:
                     try:
