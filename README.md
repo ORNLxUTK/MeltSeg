@@ -2,6 +2,9 @@
 
 ## [Overview](#overview) | [Installation Requirements](#installation-requirements) | [Usage](#usage)
 
+
+[![Demo Picture][pics/MeltSeg.png]](https://youtu.be/LZN5ZvHituQ)
+
 ### Overview
 
 [SAM2](https://github.com/facebookresearch/sam2), released by META AI, is a deep learning framework for video segmentation. The model can segment objects in a video using a series of input point labels on an initial frame. Using the initial frame and input points, the model generates a segmentation mask for each labeled object and propagates the segmented masks throughout the frames of the video. For a more in-depth discussion of the mechanisms behind SAM2 and its architecture, see their [paper](https://ai.meta.com/research/publications/sam-2-segment-anything-in-images-and-videos/).
