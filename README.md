@@ -3,7 +3,7 @@
 ## [Overview](#overview) | [Installation Requirements](#installation-requirements) | [Usage](#usage)
 
 
-[![Demo Picture][pics/MeltSeg.png]](https://youtu.be/LZN5ZvHituQ)
+[![Demo Picture](pics/MeltSeg.png)](https://youtu.be/LZN5ZvHituQ)
 
 ### Overview
 
