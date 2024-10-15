@@ -10,4 +10,4 @@ if __name__ == "__main__":
                                           video_preprocessing.output_folder)
     root.mainloop()
     sam2 = SAM2Boot(video_preprocessing.output_folder,
-                    frameannotation.file_path, video_preprocessing.fps)
+                    frameannotation.file_path, video_preprocessing.input_fps)

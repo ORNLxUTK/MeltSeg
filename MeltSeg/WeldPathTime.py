@@ -9,6 +9,7 @@ class VideoProcessing:
     def __init__(self):
         self.video_path = None
         self.output_folder = None
+        self.input_fps = None
         self.fps = None
         self.process()
 
@@ -53,6 +54,7 @@ class VideoProcessing:
 
         video = cv2.VideoCapture(self.video_path)
         fps = video.get(cv2.CAP_PROP_FPS)
+        self.input_fps = fps
         video.release()
 
         temp_root = tk.Tk()
@@ -67,7 +69,7 @@ class VideoProcessing:
         dialog.geometry(f"300x150+{position_right}+{position_top}")
         
         tk.Label(dialog, text=f"Input Video FPS: {fps:.1f}").pack(pady=10)
-        tk.Label(dialog, text="Output FPS:").pack()
+        tk.Label(dialog, text="FPS Sampling Rate:").pack()
         
         fps_options = list(reversed(range(1, int(fps) + 1)))
         selected_fps = tk.StringVar(dialog)
